@@ -1,0 +1,8 @@
+1. In your own words, what does "push" do, and what does "pull" do?
+    "Push" sends your code to Github and "Pull" gets code from it.
+2. Why did we map port 8080 to port 3000 in the docker run command?
+    Port 8080 lets people access the app, while the app runes on port 3000 inside Docker.
+3. Why is it safer to run your app as a non-root user instead of as root?
+    A non-root user is safer because it has less control over the whole server.
+4. What does it mean that your repository is public, and why is that useful to you?
+    A public repository means anyone can view it. It's useful because the server can download can download it and others can see your work. 
