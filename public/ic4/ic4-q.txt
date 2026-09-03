@@ -1,0 +1,8 @@
+1. What is the difference between an unordered (<ul>) and an ordered (<ol>) list, and when would you use each?
+    <ul> uses bullets. <ol> uses numbers. Use <ol> when order matters.
+2. Why is a relative link the right choice for a page on your own server, and when must you use a full absolute URL (starting with https://)? (In ../ic3/ic3.html, what does .. mean?)
+    A relative link is for pages on your own site. A full https:// link is for outside websites. .. means go back one folder.
+3. What is alt text on an image for, and who benefits from it?
+    It describes the image for screen readers and if the image does not load.
+4. What does it mean that images/favorite.jpg is a relative path?
+    images/favorite.jpg means the image is inside the images folder near the HTML file.
