@@ -1,0 +1,8 @@
+1. What goes in the <head> of a page versus the <body>, and who sees each?
+    The <head> has page information. The <body> has what people see on the page.
+2. What is the difference between running your page at localhost:3000 and at <your-IP>:8080?
+    localhost:3000 runs on my computer. <your-IP>:8080 runs online from the droplet.
+3. In your own words, what does push do and what does pull do in today's loop?
+    Push sends my code to GitHub. Pull gets the newest code from GitHub.
+4. Why do we test on localhost:3000 before pushing to production?
+    We test locally to make sure everything works before putting it online.
