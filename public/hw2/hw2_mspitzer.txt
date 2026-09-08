@@ -1,5 +1,5 @@
 Name: Madison Spitzer
-SEU username: <yourSEUusername>
+SEU username: mspitzer
 Droplet URL: http://167.71.24.158:8080/hw2/hw2.html
 GitHub repo: https://github.com/madisonspitzer/cosc2328
 
