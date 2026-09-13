@@ -1,0 +1,4 @@
+Name: Madison Spitzer
+SEU username: mspitzer
+Droplet URL: http://167.71.24.158:8080/hw3/hw3.html
+GitHub repo: https://github.com/madisonspitzer/cosc2328
