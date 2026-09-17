@@ -1,0 +1,59 @@
+/* IC7 - COSC 2328 - Professor McCurry
+   Implemented by: Madison Spitzer */
+
+:root {
+    --blue: #90F1EF;
+    --pink: #FFD6E0;
+    --yellow: #FFEF9F;
+    --light-green: #C1FBA4;
+    --green: #7BF1A8;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Childhood", "Comic Sans MS", sans-serif;
+    background-color: var(--pink);
+    color: #222222;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+}
+
+th,
+td {
+    border: 1px solid #999999;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--green);
+    color: #222222;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--blue);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--yellow);
+}
+
+tfoot {
+    font-style: italic;
+    text-align: center;
+    background-color: var(--light-green);
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222222;
+}
