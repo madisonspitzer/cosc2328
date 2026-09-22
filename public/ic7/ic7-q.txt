@@ -1,0 +1,8 @@
+1. What is the difference between <th> and <td>, and who benefits from using <th> correctly?
+    <th> is for headings in a table, and <td> is for regular information. <th> also helps screen readers understand the table.
+2. What do <thead>, <tbody>, and <tfoot> organize, and why split a table into them?
+    <thead> is the top part, <tbody> is the main information, and <tfoot> is the bottom part. They help keep the table organized.
+3. What does colspan="4" do? When would you use rowspan instead?
+    colspan="4" makes one cell go across 4 columns. rowspan makes one cell go down across multiple rows.
+4. What does border-collapse: collapse change about the table's appearance?
+    border-collapse: collapse makes the borders connect into single lines instead of looking doubled.

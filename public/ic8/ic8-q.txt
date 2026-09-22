@@ -1,0 +1,11 @@
+1. How does the for / id pair improve a form, and who benefits?
+    The for and id pair connects the label to the input
+    It helps users click the label and helps screen readers
+2. What does type="email" give you for free, compared to type="text"?
+    type="email" checks that the user enters an email format
+    type="text" does not
+3. What is the difference between method="post" and method="get"?
+    POST sends the data to the server
+    GET puts the data in the URL
+4. Why is built-in HTML validation (required, pattern) useful even though a determined user could bypass it?
+    It helps catch simple mistakes and makes the form easier to use before it is submitted.

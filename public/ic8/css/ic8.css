@@ -1,0 +1,120 @@
+/* IC8 - COSC 2328 - Professor McCurry
+   Implemented by: Madison Spitzer */
+
+:root {
+    --brown: #724319;
+    --rose: #D88180;
+    --pink: #F7B1B0;
+    --cream: #FEEAC7;
+    --sage: #CAD182;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background-color: var(--cream);
+    color: #222;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1px solid #999;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--brown);
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--pink);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+tfoot {
+    font-style: italic;
+    text-align: center;
+    background-color: var(--sage);
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--pink);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 2px solid var(--brown);
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+    color: var(--brown);
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:invalid {
+    border-color: #dc3545;
+}
+
+input:valid {
+    border-color: #28a745;
+}
+
+button[type="submit"] {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--sage);
+    color: #222;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--rose);
+    color: white;
+}
