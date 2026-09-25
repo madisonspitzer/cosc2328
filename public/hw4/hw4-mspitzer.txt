@@ -1,0 +1,8 @@
+Name: Madison Spitzer
+SEU username: mspitzer
+Droplet URL: http://167.71.24.158:8080/hw4/hw4.html
+GitHub repo: https://github.com/madisonspitzer/cosc2328
+
+
+http://167.71.24.158:8080/hw4/hw4.html
+http://localhost:3000/hw4/hw4.html
