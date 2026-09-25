@@ -1,0 +1,11 @@
+1. Why does .card need position: relative for the badge to land in its corner?
+    .card needs position: relative so the badge can use the card as its position reference instead of the whole page.
+2. What does z-index control, and when do you need it?
+    z-index controls which overlapping element appears on top. 
+    You use it when elements overlap and you want one to stay above another.
+3. What does "mobile-first" mean, and how do the two media queries build on the base styles?
+    Mobile-first means you design for small screens first. 
+    Then the media queries add more columns as the screen gets wider.
+4. What does object-fit: cover do to an image, and why pair it with max-width: 100%?
+    object-fit: cover makes an image fill its area without looking stretched. 
+    max-width: 100% keeps the image from getting wider than its container.
