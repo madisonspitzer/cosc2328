@@ -19,16 +19,17 @@ if (population > 1000000) {
 
 
 // Step 7 - Boolean
+// Step 7 - Boolean
 let isLoggedIn = true;
 if (isLoggedIn) {
-    console.log("Username accepted: " + username);
+    console.log("Welcome back!");
 } else {
-    console.log("Username is required");
+    console.log("Please log in");
 }
 
 
 // Step 8 - Truthy / falsy
-let username = 123; 
+let username = 123;
 
 if (username) {
     console.log("Username accepted: " + username);
