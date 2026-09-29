@@ -1,0 +1,14 @@
+1. What does defer do, and why link the script in the <head> with it?
+    defer makes the JavaScript wait until the HTML loads before it runs
+    This helps the page load correctly
+
+2. What is the difference between const and let? Give one use for each.
+    const is used for values that do not change, like a country
+    let is used for values that can change, like population.
+
+3. What does "truthy/falsy" mean? Name two values that are falsy.
+    Truthy means a value acts like true, and falsy means it acts like false
+    Two falsy values are "" and 0
+
+4. In your combined-logic step, what do &&, ||, and ! each do?
+    && means AND, || means OR, and ! means NOT
