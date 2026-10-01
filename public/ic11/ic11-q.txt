@@ -1,0 +1,11 @@
+1. Give one difference between a function declaration and a function expression.
+    A function declaration uses the function keyword by itself, while a function expression stores a function in a variable.
+
+2. When can an arrow function skip the return keyword (implicit return)?
+    It can skip return when the function is only one expression and does not use braces.
+
+3. What does the rest operator (...) let a function do?
+    It lets a function accept any number of arguments.
+
+4. In an object method, what does this refer to?
+    This refers to the object that the method belongs to.
