@@ -1,20 +1,15 @@
 // IC11 - COSC 2328 - Professor McCurry
 // Implemented by: Madison Spitzer
 
+// Step 5 - Function Declarations
 console.log("--- Function Declarations ---");
-
-function greet(name) {
-    return "Hello, " + name + "!";
-}
-
-function area(width, height) {
-    return width * height;
-}
-
+function greet(name) { return "Hello, " + name + "!"; }
 console.log(greet("Madison"));
-console.log("Area: " + area(5, 4));
 
+function area(width, height) { return width * height; }
+console.log("Area of 4 x 5 = " + area(4, 5));
 
+// Step 6 - Function Expressions & Arrow Functions
 console.log("--- Function Expressions & Arrow Functions ---");
 
 const multiply = function(a, b) {
