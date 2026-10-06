@@ -39,4 +39,4 @@ secondCard.classList.remove("card");
 const secondCardParagraph = secondCard.querySelector("p");
 
 secondCardParagraph.textContent =
-    "Safe update: even text like <script>alert('hack')</script> renders as plain characters, noy real HTML.";
+    "Safe update: even text like <script>alert('hack')</script> renders as plain characters, not real HTML.";
