@@ -1,0 +1,15 @@
+1. What's the difference between getElementById and querySelector? When would you reach for each one?
+    getElementById finds one element by its ID. querySelector can use any CSS selector and returns the first match. 
+    I would use getElementById when I know the exact ID, and querySelector when I want to select by a class, tag, or other CSS selector.
+
+2. What does querySelectorAll return, and why do you need forEach (or a loop) to do something with every item in it?
+    querySelectorAll returns a collection of all matching elements. 
+    I need forEach or a loop because I have to go through each element one at a time to change or use it.
+    
+3. Name the three classList methods you used today and what each one does.
+    classList.add() adds a class.
+    classList.remove() removes a class.
+    classList.toggle() adds the class if it is missing, or removes it if it is already there.
+
+4. Why is textContent considered safer than innerHTML for content you didn't write yourself?
+    textContent treats the content as plain text, so HTML tags do not run. innerHTML can treat the content like real HTML, which could be unsafe if the content came from a user.

@@ -1,0 +1,123 @@
+<!-- HW6 - COSC 2328 - Professor McCurry
+     Implemented by: Madison Spitzer -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HW6 - Interactive Product Calculator</title>
+
+    <link rel="stylesheet" href="css/hw6.css">
+    <script defer src="js/hw6-script.js"></script>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Product Order Calculator</h1>
+        <p>COSC 2328 - HW6</p>
+    </header>
+
+    <main class="container">
+
+        <form id="orderForm">
+
+            <fieldset>
+                <legend>Order Details</legend>
+
+                <div class="form-group">
+                    <label for="product">Product</label>
+
+                    <select id="product" required>
+                        <option value="" disabled selected>Select a product</option>
+                        <option value="laptop">Laptop</option>
+                        <option value="tablet">Tablet</option>
+                        <option value="phone">Phone</option>
+                        <option value="monitor">Monitor</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        min="1"
+                        max="10"
+                        value="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="discountCode">Discount Code</label>
+
+                    <input
+                        type="text"
+                        id="discountCode"
+                        placeholder="Optional code"
+                    >
+                </div>
+
+                <button type="submit">Calculate Total</button>
+
+            </fieldset>
+
+        </form>
+
+
+        <div id="results" class="results-hidden">
+
+            <h2>Order Results</h2>
+
+            <p>
+                Product:
+                <span id="resultProduct"></span>
+            </p>
+
+            <p>
+                Quantity:
+                <span id="resultQuantity"></span>
+            </p>
+
+            <p>
+                Subtotal:
+                <span id="resultSubtotal"></span>
+            </p>
+
+            <p>
+                Discount:
+                <span id="resultDiscount"></span>
+            </p>
+
+            <p>
+                Tax:
+                <span id="resultTax"></span>
+            </p>
+
+            <p>
+                Total:
+                <span id="resultTotal"></span>
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <footer class="site-footer">
+        Madison Spitzer - COSC 2328
+    </footer>
+
+
+    <noscript>
+        Please enable JavaScript to use the Product Order Calculator.
+    </noscript>
+
+</body>
+
+</html>
