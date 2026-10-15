@@ -1,0 +1,141 @@
+/* IC14 - COSC 2328 - Professor McCurry
+   Implemented by: Madison Spitzer */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(
+        135deg,
+        #667eea 0%,
+        #764ba2 100%
+    );
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+}
+
+header p {
+    margin-top: 6px;
+}
+
+#app-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    color: #667eea;
+    margin-bottom: 18px;
+}
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+button:hover {
+    background: #764ba2;
+}
+
+#product-container {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(230px, 1fr)
+    );
+    gap: 16px;
+}
+
+.product-card {
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.product-card h3 {
+    color: #667eea;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    margin: 4px 0;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #764ba2;
+}
+
+.product-category {
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.in-stock {
+    color: green;
+    font-weight: bold;
+}
+
+.out-of-stock {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+#stats-container {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.alert {
+    background: #ff6b6b;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    #controls {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
