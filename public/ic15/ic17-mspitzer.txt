@@ -1,10 +1,18 @@
 1. What does useState return? Name both things and describe what each one does.
+    useState returns the current value and a setter function
+    The value stores the state, and the setter changes it
 
 2. Why do you write onClick={feedPet} instead of onClick={feedPet()}?
+    onClick={feedPet} waits until the button is clicked
+    onClick={feedPet()} would run the function right away
 
 3. After you click Feed, what causes the Hunger number on the screen to update?
+    setHunger changes the hunger state
+    React then re-renders the component and shows the new number
 
 4. Trace through getPetMood() with hunger = 40 and energy = 80. Which condition matches first? What does the function return?
-
+    None of the special conditions match, so it returns “😐 Okay.”
 
 5. What is the difference between {hunger > 80 && <p>...</p>} and putting the same logic inside getPetMood()? When is each approach the right choice?
+    1. The && version is good for simply showing or hiding something
+    getPetMood() is better when you have several conditions and different messages
