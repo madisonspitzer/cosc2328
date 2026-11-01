@@ -1,0 +1,19 @@
+1. What is prop-drilling? Describe a situation where it would be a problem without the Context API.
+    Prop-drilling is when you pass data through many components just to get it to one component that needs it
+    It can become confusing when a lot of components need the same data
+
+2. What are the three things you need to use the Context API? (Create, Provide, Consume — describe each one.)
+    Create makes the context
+    Provide shares the data with the components
+    Consume lets a component read the shared data
+
+3. In this exercise, ModeToggle changes mode state that lives in App, but App never passed toggleMode as a prop. How does ModeToggle get access to it?
+    ModeToggle gets it from HabitatContext by using React.useContext()
+
+4. Where in the file must React.createContext() be called, and why does placement matter?
+    It should be called at the top of the file outside the components
+    This lets all the components use the same context
+
+5. What would you have to change if you added a fifth component that also needed to read mode?
+    You would add React.useContext(HabitatContext) inside the new component
+    You would not need to pass mode through props
