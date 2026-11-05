@@ -3,60 +3,55 @@ IC20 - COSC 2328 - Professor McCurry
 Implemented by: Madison Spitzer
 
 Reflection Answers:
-
 1. express.json() lets the server read JSON data.
-   Without it, req.body would not work.
+   Without it, req.body would be undefined.
 
 2. 200 means the request worked.
    201 means the request worked and created something new.
 
-3. The missions are only saved in memory.
+3. The missions are only stored in memory.
    A database or file would be needed to keep them after a restart.
 
 4. Yes. Both tabs use the same server and mission list,
-   so they can see the same missions.
+   so they would see the same missions.
+
 */
 
-async function loadMissions() {
-    const response = await fetch("/ic20/missions");
-    const missions = await response.json();
+const list = document.getElementById("mission-list");
+const form = document.getElementById("mission-form");
 
-    const list = document.getElementById("mission-list");
+async function loadMissions() {
+    const res = await fetch("/ic20/missions");
+    const data = await res.json();
+
     list.innerHTML = "";
 
-    missions.forEach((mission) => {
+    data.forEach(m => {
         const li = document.createElement("li");
 
         li.innerHTML =
-            "<strong>" + mission.name + "</strong><br>" +
-            mission.destination;
+            `<p class="name">${m.name}</p>
+             <p class="dest">${m.destination}</p>`;
 
         list.appendChild(li);
     });
 }
 
-const form = document.getElementById("mission-form");
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const nameInput = document.getElementById("mission-name");
-    const destInput = document.getElementById("mission-dest");
+    const name = document.getElementById("mission-name").value.trim();
+    const destination = document.getElementById("mission-dest").value.trim();
 
     await fetch("/ic20/missions", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            name: nameInput.value,
-            destination: destInput.value
-        })
+        body: JSON.stringify({ name, destination })
     });
 
-    nameInput.value = "";
-    destInput.value = "";
-
+    form.reset();
     loadMissions();
 });
 
