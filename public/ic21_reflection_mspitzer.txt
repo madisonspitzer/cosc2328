@@ -1,0 +1,15 @@
+1. What is a foreign key, and how does it connect the addresses table to the students table?
+    A foreign key is a column that connects one table to another table
+    addresses.student_id connects each address to a student by matching the student's id in the students table
+
+2. Why does the JOIN in Step 11 return only two rows instead of three?
+    It only returns two rows because the favorite_things row for student 3 was deleted
+    An INNER JOIN only shows rows that have a match in both tables
+
+3. INNER JOIN is the default. What type of JOIN would return all three students — including Priya, who has no favorite_things row — and what would her food and color values show?
+    A LEFT JOIN would return all three students, including Priya
+    Since Priya does not have a matching favorite_things row, her food and color values would show as NULL
+
+4. What does INTEGER PRIMARY KEY do in SQLite, and why do you omit the id column from INSERT statements?
+    INTEGER PRIMARY KEY gives each row a unique ID number
+    SQLite can create the ID automatically, so we do not need to include the id column when we use an INSERT statement.

@@ -29,7 +29,8 @@ app.get("/ic19/config", (req, res) => {
 });
 
 app.use("/ic20", require("./routes/ic20-routes"));
-
+app.use("/ic22", require("./routes/ic22-routes"));
+app.use("/ic23", require("./routes/ic23-routes"));
 app.use("/hw9", require("./routes/hw9-routes"));
 
 app.listen(PORT, "0.0.0.0", () => {
