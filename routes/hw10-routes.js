@@ -1,211 +1,213 @@
 // HW10 - COSC 2328 - Professor McCurry
 // Implemented by: Madison Spitzer
 
-// Express router
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const db = require('../db');
 
-// Database connection
-const db = require("../db");
-
-
-// Build page
+// Build the whole HTML page
 function buildPage(monsters, message, error, battle) {
-    const cards = monsters.map((monster) => `
+    const monsterCards = monsters.map(monster => `
         <div class="monster-card">
             <h3>${monster.name}</h3>
-            <p>${monster.species}</p>
+            <p>Species: ${monster.species}</p>
             <p>Attack: ${monster.attack}</p>
             <p>Defense: ${monster.defense}</p>
             <p>HP: ${monster.hp}</p>
             <p>ID: ${monster.id}</p>
         </div>
-    `).join("");
+    `).join('');
 
-    // Full HTML document
     return `
-        <!DOCTYPE html>
-        <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-        <head>
-            <meta charset="UTF-8">
-            <title>Monster Arena</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Arena</title>
+    <link rel="stylesheet" href="/hw10/css/hw10.css">
+</head>
 
-            <!-- CSS path -->
-            <link rel="stylesheet" href="/hw10/css/hw10.css">
-        </head>
+<body>
 
-        <body>
+    <h1>Monster Arena</h1>
 
-            <h1>Monster Arena</h1>
+    ${message ? `<p class="banner-success">${message}</p>` : ''}
+    ${error ? `<p class="banner-error">${error}</p>` : ''}
 
-            <!-- Success and error banners -->
-            ${message ? `<p class="banner-success">${message}</p>` : ""}
-            ${error ? `<p class="banner-error">${error}</p>` : ""}
+    <h2>Monster Roster</h2>
 
-            <!-- Monster roster -->
-            <h2>Monster Roster</h2>
+    <div class="monster-roster">
+        ${monsterCards}
+    </div>
 
-            <div class="monster-roster">
-                ${cards}
-            </div>
+    <h2>Recruit a Monster</h2>
 
+    <form action="/hw10/recruit" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required>
 
-            <!-- Recruit form -->
-            <h2>Recruit Monster</h2>
+        <label>Species:</label>
+        <input type="text" name="species" required>
 
-            <form action="/hw10/recruit" method="POST">
-                <input name="name" placeholder="Name" required>
-                <input name="species" placeholder="Species" required>
-                <input name="attack" type="number" placeholder="Attack" required>
-                <input name="defense" type="number" placeholder="Defense" required>
-                <input name="hp" type="number" placeholder="HP" required>
+        <label>Attack:</label>
+        <input type="number" name="attack" required>
 
-                <button type="submit">Recruit</button>
-            </form>
+        <label>Defense:</label>
+        <input type="number" name="defense" required>
 
+        <label>HP:</label>
+        <input type="number" name="hp" required>
 
-            <!-- Retire form -->
-            <h2>Retire Monster</h2>
+        <button type="submit">Recruit</button>
+    </form>
 
-            <form action="/hw10/retire" method="POST">
-                <input name="id" type="number" placeholder="Monster ID" required>
+    <h2>Retire a Monster</h2>
 
-                <button type="submit">Retire</button>
-            </form>
+    <form action="/hw10/retire" method="POST">
+        <label>Monster ID:</label>
+        <input type="number" name="id" required>
 
+        <button type="submit">Retire</button>
+    </form>
 
-            <!-- Battle form -->
-            <h2>Battle</h2>
+    <h2>Battle</h2>
 
-            <form action="/hw10/battle" method="POST">
-                <button type="submit">Battle!</button>
-            </form>
+    <form action="/hw10/battle" method="POST">
+        <button type="submit">Battle!</button>
+    </form>
 
+    ${battle ? `
+        <div class="battle-results">
+            <h2>Battle Results</h2>
 
-            <!-- Battle results -->
-            ${battle ? `
-                <div class="battle-results">
-                    <h2>Battle Results</h2>
+            <h3>${battle.a.name} vs ${battle.b.name}</h3>
 
-                    <p>${battle.a.name}: ${battle.scoreA}</p>
-                    <p>${battle.b.name}: ${battle.scoreB}</p>
+            <p>
+                ${battle.a.name} (${battle.a.species}) -
+                Attack: ${battle.a.attack},
+                Defense: ${battle.a.defense},
+                HP: ${battle.a.hp}
+            </p>
 
-                    <h3>${battle.winner}</h3>
-                </div>
-            ` : ""}
+            <p>Score: ${battle.scoreA}</p>
 
-        </body>
-        </html>
+            <p>
+                ${battle.b.name} (${battle.b.species}) -
+                Attack: ${battle.b.attack},
+                Defense: ${battle.b.defense},
+                HP: ${battle.b.hp}
+            </p>
+
+            <p>Score: ${battle.scoreB}</p>
+
+            <h3>${battle.winner}</h3>
+        </div>
+    ` : ''}
+
+</body>
+</html>
     `;
 }
 
-
-// GET route
-router.get("/", (req, res) => {
+// GET Monster Arena page
+router.get('/', (req, res) => {
     const message = req.query.message || null;
     const error = req.query.error || null;
 
-    db.all("SELECT * FROM monsters ORDER BY id", [], (err, rows) => {
+    db.all('SELECT * FROM monsters ORDER BY id', [], (err, rows) => {
         if (err) {
-            return res.status(500).send("Database error");
+            return res.status(500).send('<p>Database error: ' + err.message + '</p>');
         }
 
-        res.send(buildPage(rows, message, error, null));
+        const html = buildPage(rows, message, error, null);
+        res.send(html);
     });
 });
 
-
-// Recruit route
-router.post("/recruit", (req, res) => {
+// Recruit monster
+router.post('/recruit', (req, res) => {
     const { name, species, attack, defense, hp } = req.body;
 
     db.run(
-        "INSERT INTO monsters (name, species, attack, defense, hp) VALUES (?, ?, ?, ?, ?)",
+        'INSERT INTO monsters (name, species, attack, defense, hp) VALUES (?, ?, ?, ?, ?)',
         [name, species, attack, defense, hp],
-        (err) => {
+        function (err) {
             if (err) {
                 return res.redirect(
-                    "/hw10?error=" + encodeURIComponent("Could not recruit monster.")
+                    '/hw10?error=' + encodeURIComponent(err.message)
                 );
             }
 
             res.redirect(
-                "/hw10?message=" + encodeURIComponent("Monster recruited!")
+                '/hw10?message=' + encodeURIComponent('Monster recruited!')
             );
         }
     );
 });
 
-
-// Retire route
-router.post("/retire", (req, res) => {
+// Retire monster
+router.post('/retire', (req, res) => {
     const { id } = req.body;
 
     db.run(
-        "DELETE FROM monsters WHERE id = ?",
+        'DELETE FROM monsters WHERE id = ?',
         [id],
         function (err) {
             if (err) {
                 return res.redirect(
-                    "/hw10?error=" + encodeURIComponent("Could not retire monster.")
+                    '/hw10?error=' + encodeURIComponent(err.message)
                 );
             }
 
-            // Check if no monster was deleted
             if (this.changes === 0) {
                 return res.redirect(
-                    "/hw10?error=" + encodeURIComponent("Monster not found.")
+                    '/hw10?error=' + encodeURIComponent('Monster not found.')
                 );
             }
 
             res.redirect(
-                "/hw10?message=" + encodeURIComponent("Monster retired!")
+                '/hw10?message=' + encodeURIComponent('Monster retired!')
             );
         }
     );
 });
 
-
-// Battle route
-router.post("/battle", (req, res) => {
-    db.all("SELECT * FROM monsters", [], (err, rows) => {
+// Battle
+router.post('/battle', (req, res) => {
+    db.all('SELECT * FROM monsters', [], (err, rows) => {
         if (err) {
             return res.redirect(
-                "/hw10?error=" + encodeURIComponent("Database error.")
+                '/hw10?error=' + encodeURIComponent(err.message)
             );
         }
 
         if (rows.length < 2) {
             return res.redirect(
-                "/hw10?error=" + encodeURIComponent("Not enough monsters to battle!")
+                '/hw10?error=' + encodeURIComponent('Not enough monsters to battle!')
             );
         }
 
-        let first = Math.floor(Math.random() * rows.length);
-        let second = Math.floor(Math.random() * rows.length);
+        let i = Math.floor(Math.random() * rows.length);
+        let j;
 
-        // Two different random fighters
-        while (second === first) {
-            second = Math.floor(Math.random() * rows.length);
-        }
+        do {
+            j = Math.floor(Math.random() * rows.length);
+        } while (j === i);
 
-        const a = rows[first];
-        const b = rows[second];
+        const a = rows[i];
+        const b = rows[j];
 
-        // Score calculation
         const scoreA = a.attack + a.defense + a.hp;
         const scoreB = b.attack + b.defense + b.hp;
 
-        // Draw case
-        let winner = "Draw!";
+        let winner = 'Draw!';
 
         if (scoreA > scoreB) {
-            winner = a.name + " wins!";
-        }
-
-        if (scoreB > scoreA) {
-            winner = b.name + " wins!";
+            winner = a.name + ' wins!';
+        } else if (scoreB > scoreA) {
+            winner = b.name + ' wins!';
         }
 
         const battle = {
@@ -216,11 +218,9 @@ router.post("/battle", (req, res) => {
             winner
         };
 
-        // Send battle page
-        res.send(buildPage(rows, null, null, battle));
+        const html = buildPage(rows, null, null, battle);
+        res.send(html);
     });
 });
 
-
-// Export router
 module.exports = router;

@@ -10,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -32,6 +33,7 @@ app.use("/ic20", require("./routes/ic20-routes"));
 app.use("/ic22", require("./routes/ic22-routes"));
 app.use("/ic23", require("./routes/ic23-routes"));
 app.use("/hw9", require("./routes/hw9-routes"));
+app.use('/hw10', require('./routes/hw10-routes'));
 
 app.listen(PORT, "0.0.0.0", () => {
     console.log(`Running on http://localhost:${PORT}`);
